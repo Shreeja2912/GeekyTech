@@ -1,4 +1,6 @@
 # GeekyTech
+To view the code-> click "Go To Files" on right handside
+
 Please see this screenrecord if hereko deployment fails:
 https://drive.google.com/file/d/1rMPIrznwk6DS4FV-xcoECqUqqJhjUGPd/view?usp=sharing
 
