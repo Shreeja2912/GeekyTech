@@ -1,4 +1,4 @@
-# GeekyTech
+# InfyProject
 To view the code-> click "Go To Files" on right handside
 
 Demo of the application:
