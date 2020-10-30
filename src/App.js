@@ -178,8 +178,6 @@ class App extends Component {
   }
 
   handleFetchDetailsBySaga = (id) => {
-    console.log(id);
-
     this.setState({
       open: true,
     });
@@ -195,18 +193,13 @@ class App extends Component {
   };
 
   editSearchTerm = (e) => {
-    console.log("ok");
     this.setState({ searchTerm: e.target.value });
   };
 
   dynamicSearch = () => {
-    // console.log(this.props.employees[0]?.login);
     return this.props.employees.filter((name) =>
-      name.login.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      name?.login?.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     );
-    //   ret = name;
-    // } else ret = null;
-    // return ret;
   };
 
   LoadingSpinner = ({ classes }) => (
@@ -222,7 +215,7 @@ class App extends Component {
     >
       <MUICardContent>
         <Avatar className={classes.avatar} src={avatar_url} />
-        <Tooltip title={`User Name: ${login}`} className={classes.toolTip}>
+        <Tooltip title={`UserName: ${login}`} className={classes.toolTip}>
           <Typography variant="h6" className={classes.heading}>
             {login}
           </Typography>
@@ -244,13 +237,7 @@ class App extends Component {
   }) => (
     <MUICard className={classes.Detailscard} onClick={this.handleClose}>
       <MUICardContent>
-        <Box
-        // style={{
-        //   border: "solid",
-        //   borderRadius: 12,
-        //   color: "#0000A0",
-        // }}
-        >
+        <Box>
           <MUICardContent>
             <div style={{ display: "flex", alignItems: "center" }}>
               <Avatar
@@ -259,9 +246,7 @@ class App extends Component {
               ></Avatar>
               <Typography style={{ padding: "2vh", opacity: 0 }}>|</Typography>
               <div>
-                <h3 className={classes.heading}>
-                  {bio ? { name } : "Anonymous"}
-                </h3>
+                <h3 className={classes.heading}>{name ? name : "Anonymous"}</h3>
                 <div>
                   {bio ? (
                     <Typography className={classes.subheader}>{bio}</Typography>
@@ -307,7 +292,7 @@ class App extends Component {
           {" "}
           <Info />
           <Typography className={classes.nullMsg}>
-            Name Not found in the list...
+            Name Not found in the list
           </Typography>
         </div>
       </MUICardContent>
@@ -319,16 +304,14 @@ class App extends Component {
     const { employees } = this.props;
     const { details } = this.props;
     const getData = (employ) => {
-      console.log("hi", employ);
       if (employ.length === 0) {
-        console.log("lol", employ);
         return (
           <div className={classes.nullRoot}>
             <div style={{ display: "flex", alignItems: "center" }}>
               {" "}
               <Info />
               <Typography className={classes.nullMsg}>
-                Name Not found in the list...
+                Name Not found in the list
               </Typography>
             </div>
             <Typography className={classes.clickMsg}>
@@ -402,7 +385,8 @@ class App extends Component {
           >
             {this.props.statusDetails === "loading" ? (
               <this.LoadingSpinner classes={classes}></this.LoadingSpinner>
-            ) : this.props.details?.length !== 0 ? (
+            ) : this.props.details?.length !== 0 &&
+              this.props.statusDetails !== "failure" ? (
               <div style={getModalStyle()} className={classes.paper}>
                 <this.DetailsCard classes={classes} {...this.props.details} />
               </div>
