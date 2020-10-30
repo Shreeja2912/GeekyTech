@@ -385,8 +385,7 @@ class App extends Component {
           >
             {this.props.statusDetails === "loading" ? (
               <this.LoadingSpinner classes={classes}></this.LoadingSpinner>
-            ) : this.props.details?.length !== 0 &&
-              this.props.statusDetails !== "failure" ? (
+            ) : this.props.details?.length !== 0 ? (
               <div style={getModalStyle()} className={classes.paper}>
                 <this.DetailsCard classes={classes} {...this.props.details} />
               </div>
