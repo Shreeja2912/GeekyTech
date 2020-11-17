@@ -63,7 +63,6 @@ const styles = (theme) => ({
     },
   },
   Detailscard: {
-    borderRadius: 12,
     height: "inherit",
     width: "inherit",
     borderRadius: 15,
@@ -302,7 +301,6 @@ class App extends Component {
   render() {
     const { status, classes } = this.props;
     const { employees } = this.props;
-    const { details } = this.props;
     const getData = (employ) => {
       if (employ.length === 0) {
         return (
